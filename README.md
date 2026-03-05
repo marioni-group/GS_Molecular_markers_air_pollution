@@ -1,6 +1,6 @@
 # Air pollution exposure in Generation Scotland: molecular fingerprints and health outcomes
 
-Pre-print url: 
+Pre-print url: https://www.medrxiv.org/content/10.64898/2026.03.04.26347573v1
 
 Individual scripts are in folders for each component of the study:
 -	**01_Scotland_wide_pollution:** descriptive analysis of pollution levels across Scotland from 2005 – 2011 (incorporating the recruitment period of Generation Scotland)
