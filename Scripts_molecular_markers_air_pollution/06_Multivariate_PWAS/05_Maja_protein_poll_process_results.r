@@ -1,4 +1,4 @@
-#MAJA_processing two
+#MAJA_processing
 
 #Maja protein-pollution process results - comparing rintscaled vs scaled pollution
 
@@ -76,7 +76,15 @@ results_full2 <- results_full2 %>%
 
 fwrite(results_full2, "maja_fullresults_scpoll.csv")
 
-summary_df <- results_full2 %>%
+results_full3 <- results_full2 %>%
+    mutate(lower2 = Betas - 2*stdev,
+        upper2 = Betas + 2*stdev,
+        association2 = ifelse(pip > 0.95 & lower2 < 0 & upper2 <0, "yes",
+                        ifelse(pip > 0.95 & lower2 > 0 & upper2 > 0, "yes", "no")))
+results_full3 %>% filter(association2 == "yes") 
+fwrite(results_full3, file = "maja_fullresults_adjthreshold.csv")
+
+summary_df <- results_full3 %>%
   filter(association == "yes") %>%
   group_by(protein) %>%
   summarise(associated_traits = paste(Trait, collapse = ","),
