@@ -76,13 +76,10 @@ aic_results <- list()
 for (pollutant in pollutants1) {
     print(pollutant)
     #model list
-    formula_list <- list(
+   formula_list <- list(
       paste("Surv(tte_years, status) ~", pollutant, "+ age + as.factor(sex) + (1|id)"),
-      paste("Surv(tte_years, status) ~", pollutant, "+ age + as.factor(sex)  + (1|id) + 
-                                                        logunits + logbmi + logsmok + simd2009v2rank"), 
-      paste("Surv(tte_years, status) ~", pollutant, "+ age + as.factor(sex) + (1|id) + 
-                                                      logunits + logbmi + logsmok + simd2009v2rank +
-                                                       as.factor(e4_count)")
+      paste("Surv(tte_years, status) ~", pollutant, "+ age + as.factor(sex)  + (1|id) + logunits + logbmi + logsmok + simd2009v2rank + as.factor(e4_count)"), 
+      paste("Surv(tte_years, status) ~", pollutant, "+ age + as.factor(sex) + (1|id) + logunits + logbmi + logsmok + simd2009v2rank +  as.factor(e4_count) + Total_cholesterol + HDL_cholesterol + as.factor(diabetes) + as.factor(hypertension)")
     )
   # Convert formulas to formula objects
     formula_list <- lapply(formula_list, as.formula)
@@ -105,7 +102,7 @@ aic_list[[model_name]] <- extract_coxme_aic(model, pollutant, model_name)
       model_index <- model_index + 1     
 }
 assump_test[[pollutant]] <- bind_rows(assump_results)
-cox_results[[pollutant]] <- bind_rows(model_results) 
+cox_results[[pollutant]] <- bind_rows(model_results, .id = "model") 
 aic_results[[pollutant]] <- bind_rows(aic_list)
   }
 
