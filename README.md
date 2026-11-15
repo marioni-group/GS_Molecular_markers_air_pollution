@@ -2,7 +2,7 @@
 
 
 Individual scripts are in folders for each component of the study:
--	**01_Scotland_wide_pollution:** descriptive analysis of pollution levels across Scotland from 2005 – 2011 (incorporating the recruitment period of Generation Scotland)
+-	**01_Scotland_wide_pollution:** descriptive analysis of pollution levels across Scotland from 2005 – 2011 (incorporating the recruitment period of Generation Scotland). These data and analysis are presented in the pre-print.
   
 -	**02_GS_pollution:** generating estimated pollutant exposures for GS participants and descriptive analysis of these exposures
   
